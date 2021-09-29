@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Video Confrence WebApp</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        <h1 align="center">Video Confrence App</h1>
+        <div class="home-div">
+            <button class="start-btn" onclick="instantMeet()">Start an instant Meeting</button>
+            
+            <div class="join-div">
+                <input id="codeInput" type="text" class="join-input" placeholder="Paste the invite code" >
+                <button onclick="redirectToMeet()">Join Room</button>
+            </div>
+        </div>
+        
+        <footer>
+            Made with &#10084; by <a href="https://github.com/Aniket2107/video-confrence" target="_blank">Aniket Habib</a>
+        </footer>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
