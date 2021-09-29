@@ -1,5 +1,6 @@
 const express = require("express");
 const { ExpressPeerServer } = require("peer");
+const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
 const app = express();
 
@@ -23,7 +24,9 @@ app.use("/peerjs", peerServer);
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("home", {
+    roomId: uuidv4(),
+  });
 });
 
 app.get("/:room", (req, res) => {

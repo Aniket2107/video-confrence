@@ -176,15 +176,15 @@ async function copyInvite() {
   alert("Copied the text: " + msg);
 }
 
-function instantMeet() {
-  const id = uuidv4();
+// function instantMeet() {
+//   const id = uuidv4();
 
-  window.location.href = `${window.location.host}/${id}`;
-}
+//   window.location.href = `${window.location.host}/${id}`;
+// }
 
-function redirectToMeet() {
-  const code = document.querySelector("#codeInput").value;
-  if (!code || code.length < 3) return;
+// function redirectToMeet() {
+//   const code = document.querySelector("#codeInput").value;
+//   if (!code || code.length < 3) return;
 
-  window.location.href = `${window.location.host}/${code}`;
-}
+//   window.location.href = `${window.location.host}/${code}`;
+// }

@@ -13,11 +13,11 @@
 
         <h1 align="center">Video Confrence App</h1>
         <div class="home-div">
-            <button class="start-btn" onclick="instantMeet()">Start an instant Meeting</button>
+            <a href="<%= roomId  %>" ><button class="start-btn">Start an instant Meeting</button></a>
             
             <div class="join-div">
                 <input id="codeInput" type="text" class="join-input" placeholder="Paste the invite code" >
-                <button onclick="redirectToMeet()">Join Room</button>
+                <button onclick="join()">Join Room</button>
             </div>
         </div>
         
@@ -26,5 +26,11 @@
         </footer>
     </div>
 </body>
-<script src="script.js"></script>
+<script>
+      const join = () => {
+        window.location.href = `/${
+          document.getElementById("codeInput").value
+        }`;
+      };
+</script>
 </html>
