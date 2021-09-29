@@ -1,8 +1,9 @@
 const socket = io("/");
 
 const myPeer = new Peer(undefined, {
-  host: "/",
-  port: PORT,
+  host: location.hostname,
+  port: location.port || (location.protocol === "https:" ? 443 : 80),
+  path: "/peerjs",
 });
 
 let myVideoStream;

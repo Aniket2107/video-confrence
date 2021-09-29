@@ -1,5 +1,5 @@
 const express = require("express");
-// const { v4: uuidv4 } = require("uuid");
+const { ExpressPeerServer } = require("peer");
 require("dotenv").config();
 const app = express();
 
@@ -12,6 +12,13 @@ const server = app.listen(PORT, () =>
 );
 
 const io = require("socket.io")(server);
+
+const peerServer = ExpressPeerServer(server, {
+  debug: process.env.NODE_ENV === "development",
+});
+
+// Middlewares
+app.use("/peerjs", peerServer);
 
 app.use(express.static("public"));
 
