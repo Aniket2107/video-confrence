@@ -1,36 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
-    <title>Video Confrence WebApp</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
-</head>
-<body>
-    <div class="container">
-
-        <h1 align="center">Video Confrence App</h1>
-        <div class="home-div">
-            <a href="<%= roomId  %>" ><button class="start-btn">Start an instant Meeting</button></a>
-            
-            <div class="join-div">
-                <input id="codeInput" type="text" class="join-input" placeholder="Paste the invite code" >
-                <button onclick="join()">Join Room</button>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="home.css" />
+    <title>VCL | Video Confrence WebApp</title>
+    <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+  </head>
+  <body>
+    <div class="home_container">
+      <header class="header">
+        <div class="header_div1">
+          <img src="google.png" alt="" class="header_img" />
+          <p class="head_name">VCL</p>
         </div>
-        
-        <footer>
-            Made with &#10084; by <a href="https://github.com/Aniket2107/video-confrence" target="_blank">Aniket Habib</a>
-        </footer>
+        <div class="time">
+          <span id="span_time"></span>
+        </div>
+      </header>
+      <div class="home_div">
+        <div class="left">
+          <h1>
+            Premium video meetings.<br />
+            Now free for everyone.
+          </h1>
+          <p>
+            We re-engineered the service we built for secure business<br />
+            meetings, VCL Meet, to make it free and available for all.
+          </p>
+
+          <div class="btn-div">
+            <a href="<%= roomId  %>" class="button">
+              <i class="fa fa-video"></i> New Meeting</a
+            >
+
+            <input
+              id="codeInput"
+              class="input"
+              type="text"
+              placeholder="Enter code or link"
+            />
+            <span onclick="join()" class="join_span" id="linkJoinBtn"
+              >Join</span
+            >
+          </div>
+        </div>
+        <div class="right">
+          <img src="undraw_schedule_meeting_52nu.png" alt="Home.png" />
+        </div>
+      </div>
+
+      <!-- <footer>
+        <center>
+          Made with &#10084; by
+          <a
+            href="https://github.com/Aniket2107/video-confrence"
+            target="_blank"
+            >Aniket Habib</a
+          >
+        </center>
+      </footer> -->
     </div>
-</body>
-<script>
-      const join = () => {
-        window.location.href = `/${
-          document.getElementById("codeInput").value
-        }`;
-      };
-</script>
+  </body>
+  <script>
+    const codeInput = document.getElementById("codeInput");
+    const linkJoinBtn = document.getElementById("linkJoinBtn");
+    const timeSpan = document.getElementById("span_time");
+
+    getDate();
+
+    const join = () => {
+      const url = codeInput.value;
+      const res = url.match(
+        /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
+      );
+
+      if (res == null) {
+        window.location.href = `/${codeInput.value}`;
+      } else {
+        let code = url.split("/");
+        code = code[code.length - 1];
+        window.location.href = `/${code}`;
+      }
+    };
+
+    codeInput.addEventListener("input", (e) => {
+      if (e.target.value != "") {
+        linkJoinBtn.style.display = "inline";
+      } else {
+        linkJoinBtn.style.display = "none";
+      }
+    });
+
+    function getDate() {
+      const dt = new Date().toDateString();
+      timeSpan.innerText = dt;
+    }
+  </script>
 </html>

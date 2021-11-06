@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VideoChatApp</title>
+    <title>VCL | VideoChatApp</title>
     <link rel="stylesheet" href="style.css" />
     <script>
       const ROOM_ID = "<%= roomId %>";
@@ -22,12 +22,18 @@
 
   </head>
   <body>
+
+    <div class="modal" id="modal">
+      <button id="copyInviteBtn">Copy invite</button>
+      <button id="sendMailBtn">Send Mail</button>
+    </div>
+
     <div class="header">
       <div class="logo">
         <h3>Video Chat</h2>
       </div>
     </div>  
-    <div class="main">  
+    <div class="main" id="main">  
     <div class="main__left">
       <div class="videos__group">
         <div id="video-grid">
@@ -37,17 +43,29 @@
       <div class="options">
         <div class="options__left">
           <div id="stopVideo" class="options__button">
-            <i class="fa fa-video-camera"></i>
+            <i class="fas fa-camera"></i>
           </div>
           <div id="muteButton" class="options__button">
             <i class="fa fa-microphone"></i>
           </div>
         </div>
         <div class="options__right">
-          <div id="inviteButton" class="options__button">
-            <i class="fas fa-user-plus"></i>
+          
+
+            <div class="options__button" id="recordBtn">
+               <i class="fa fa-video-camera" ></i>
+            </div>  
+            <div class="options__button" id="stopRecordBtn" ><i class="far fa-stop-circle fa-2x" style="color:red"></i></div>
+            <a id="download" class="options__button" ><i class="fa fa-download"></i></a>
+          
+            <div class="options__button" id="toggleUserData" >
+              <i class="fa fa-users"></i>
+            </div>
+
+            <div id="inviteButton" class="options__button">
+              <i class="fas fa-user-plus"></i>
+            </div>
           </div>
-        </div>
       </div>
     </div>
     <div class="main__right">
@@ -62,7 +80,18 @@
 
       </div>
 
+      <div class="users_info_container" id="userInfoRight" style="display: none;" >
+          
+        <h1 class="user_info_head">Users</h1> 
+        <input type="search" class="user_info_searchBar" placeholder="Search user" id="userSearch_input">
+         
+         
+        <div id="userinfo_div"></div>
+      </div>  
     </div>
   </div>
+
+
+  
   </body>
 </html>
