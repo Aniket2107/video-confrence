@@ -22,8 +22,8 @@ p {
 }
 
 .header_img {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
 }
 
 .head_name {
@@ -101,6 +101,13 @@ p {
 
 .input:focus {
   outline: none;
+}
+
+.input::after {
+  content: "nice";
+  background-color: red;
+  width: 30px;
+  height: 50px;
 }
 
 .join_span {

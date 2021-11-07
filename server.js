@@ -131,7 +131,7 @@ app.get("/:room", (req, res) => {
 
 let users = new Users();
 
-console.log(users);
+// console.log(users);
 
 io.on("connection", (socket) => {
   socket.on("join-room", (roomId, userId, username) => {
